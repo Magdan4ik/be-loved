@@ -1,0 +1,185 @@
+@import "vars"
+
+/*==========  Desktop First  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1199px)
+	.header
+		&__logo
+			flex-grow: 0
+		&__search
+			&-form
+				width: 200px
+		&__navlist
+			&-dropdown
+				top: 56px
+
+
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 991px)
+	.header
+		~ main
+			padding-top: 90px
+		&__search
+			display: none
+		&__burger
+			display: block
+		&__nav
+			display: none
+			background: #fff
+			width: 100%
+			max-width: 400px
+			height: 100%
+			min-height: 100vh
+			position: absolute
+			top: 91px
+			left: 0
+			transform: translateX(-100%)
+			opacity: 0
+			overflow-y: auto
+			transition: 0.3s opacity, 0.5s transform
+			z-index: 3
+			&.active
+				display: block
+				transform: translateX(0)
+				opacity: 1
+		&__navline
+			display: none
+		&__navlist
+			flex-direction: column
+			align-items: flex-start
+			> li
+				display: grid
+				grid-template-columns: 1fr max-content
+				align-items: center
+				width: 100%
+				border-bottom: 1px solid rgba(0, 0, 0, 0.2)
+				&:hover .header__navlist-dropdown
+					display: none
+				> a
+					padding: 17px !important
+					display: inline-block
+			&-dropdown.visible
+				display: flex !important
+			&-dropdown
+				position: static
+				grid-column: 1/-1
+				order: 2
+				flex-direction: column
+				padding: 0 38px 10px
+				border: none
+				animation: fadeIn 0.4s both
+				li
+					align-items: flex-start
+					a
+						width: 100%
+
+	.navlist__more
+		border: solid black
+		border-width: 0 1px 1px 0
+		display: inline-block
+		padding: 3px
+		margin-right: 35px
+		transform: rotate(-45deg)
+		transition: 0.3s transform
+		&.active
+			transform: rotate(45deg)
+
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 767px)
+	.header
+		box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2)
+		~ main
+			padding-top: 180px
+		&__top
+			height: auto
+			display: grid
+			grid-template-columns: 1fr 1fr 1fr
+			grid-column-gap: 10px
+			padding: 5px 0 10px
+			overflow: hidden
+		&__logo
+			justify-self: center
+			a
+				width: 90px
+				height: 25px
+				font-size: 13px
+		&__info
+			grid-column: 1/-1
+			order: 4
+			padding: 10px 0
+			border-top: 1px solid #cdcdcd
+			border-bottom: 1px solid #cdcdcd
+			margin: 10px -10px
+			text-align: center
+			height: 70px
+			transition: 0.4s all
+		&__control
+			order: 3
+		&__search
+			display: block
+			order: 5
+			grid-column: 1/-1
+			height: 40px
+			transition: 0.4s all
+			&-form
+				width: 100%
+				max-width: 350px
+				height: 40px
+				margin: 0 auto
+			&-input
+				background: #fafaf9
+				padding: 0 15px
+				border: 1px solid #cdcdcd
+				border-radius: 3px 0 0 3px
+				+ label
+					display: none
+			&-submit
+				background: #191919
+				color: #fff
+				min-width: 70px
+				margin: 0
+				border-radius: 0 3px 3px 0
+				i
+					display: none
+				span
+					display: inline
+					font-family: 'GothamPro'
+		&[data-compacted='true']
+			.header__info,
+			.header__search
+				height: 0
+				opacity: 0
+				padding: 0
+				margin: 0
+				border: none
+			~ main
+				padding-top: 100px /*header height + offsetY height*/
+		&__nav
+			top: 50px
+		
+
+		.customer
+			display: flex
+			align-items: center
+		.basket
+			border-left: none
+			margin: 0
+			padding: 0
+			&__title
+				display: none
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px)
+	/**/
+
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px)
+	/**/
+
+
