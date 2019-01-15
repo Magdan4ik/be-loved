@@ -57,20 +57,40 @@ window.addEventListener('load', function() {
 		li.forEach(el => {
 			let	more = d.createElement('div');
 				more.className = 'navlist__more';
+				more.innerHTML = "Развернуть";
 			el.insertBefore(more, el.lastChild);
+
 		});
 
 		let more = d.querySelectorAll('.navlist__more');
 
 		more.forEach(el => {
-			el.addEventListener('click', () => {
-				ddown.forEach( el => el.classList.remove('visible'));
-				more.forEach( el => el.classList.remove('active'));
-				el.classList.add('active');
-				el.parentNode.querySelector('.header__navlist-dropdown').classList.add('visible');
+			el.addEventListener('click', (event) => {
+				toggleMore(el);
+				closeOthers(el);
 			});
 		});
 
+		function toggleMore(el) {
+			el.classList.toggle('active');
+			if(el.classList.contains('active')) {
+				el.parentNode.querySelector('.header__navlist-dropdown').classList.add('visible');
+				el.innerHTML = "Свернуть";
+			} else {
+				el.parentNode.querySelector('.header__navlist-dropdown').classList.remove('visible');
+				el.innerHTML = "Развернуть"
+			}
+		};
+
+		function closeOthers(el) {
+			more.forEach(el => {
+				if(el !== event.target) {
+					el.classList.remove('active');
+					el.innerHTML = "Развернуть";
+					el.parentNode.querySelector('.header__navlist-dropdown').classList.remove('visible');
+				};
+			});
+		};
 
 	}(document, window));
 

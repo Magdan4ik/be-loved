@@ -60,6 +60,7 @@
 				> a
 					padding: 17px !important
 					display: inline-block
+					justify-self: start
 			&-dropdown.visible
 				display: flex !important
 			&-dropdown
@@ -73,18 +74,25 @@
 				li
 					align-items: flex-start
 					a
-						width: 100%
+						width: auto
 
 	.navlist__more
-		border: solid black
-		border-width: 0 1px 1px 0
-		display: inline-block
-		padding: 3px
-		margin-right: 35px
-		transform: rotate(-45deg)
-		transition: 0.3s transform
-		&.active
+		height: 35px
+		display: inline-flex
+		justify-content: center
+		align-items: center
+		margin: 0 20px
+		&::after
+			content: ""
+			border: solid black
+			border-width: 0 1px 1px 0
+			display: inline-block
+			padding: 3px
+			margin-left: 4px
 			transform: rotate(45deg)
+			// transition: 0.3s transform
+		&.active::after
+			transform: rotate(45deg) scale(-1, -1)
 
 
 
