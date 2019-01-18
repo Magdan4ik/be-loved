@@ -374,28 +374,33 @@ body
 			position: absolute
 			left: 0
 			right: 0
-			padding: 25px
 			width: 100%
 			min-height: 100px
 			border: 1px solid rgba(0,0,0,0.1)
 			list-style: none
 			li
-				flex-basis: 33%
+				flex-basis: 33.3333%
 				display: inline-flex
 				align-items: center
 				a
-					display: inline-flex
-					width: 70%
-					padding: 7px 0
+					background-color: #fff
+					display: flex
+					align-items: center
+					height: 100%
+					width: 100%
+					padding: 15px 25px
 					font-family: 'Gilroy'
 					font-weight: 300
 					font-size: 16px
 					color: #212121
-					transition: 0.3s color
+					transition: 0.3s
 					&:hover,
 					&:focus
+						background-color: #fef3ef
 						text-decoration: none
-						color: #ea5144
+						color: #212121
+					span
+						width: 70%
 .navlist__more
 	display: none
 
