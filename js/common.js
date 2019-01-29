@@ -1,6 +1,8 @@
 
 window.addEventListener('load', function() {
 
+	/* Vladislav M. scripts start */
+
 	/* Sliding line on nav link */
 		(function(d) {
 			let link    = d.querySelectorAll(".header__navlist > li > a");
@@ -100,5 +102,79 @@ window.addEventListener('load', function() {
 		const headerCompact = () => setTimeout(() => {(w.pageYOffset > 50) ? header.dataset.compacted = true : header.dataset.compacted = false}, 150);
 		w.addEventListener("scroll", headerCompact);
 	}(document, window));
+
+
+
+
+	/* ALL POPUP`S START */
+	(function(d, w) {
+		d.querySelectorAll('.open__popup').forEach(el => {
+		el.addEventListener('click', () => {
+			d.querySelector(el.dataset.popup).dataset.visible = true;
+		});
+		});
+	
+		d.querySelectorAll('.popup').forEach(el => {
+		el.addEventListener('click', e => {
+			if(e.target.classList.contains("popup") || e.target.classList.contains("popup__close")) {
+			el.dataset.visible = false;
+			}
+		});
+		});
+	}(document, window));
+	/* POPUP END */
+	
+	
+	/* SALE POPUP START */
+	(function(d, w) {
+		const popup = d.querySelector('.popup.discount');
+	
+		if(!sessionStorage.getItem('firstVisit')) {
+			sessionStorage.setItem('firstVisit', Date.now());
+		}
+	
+		let timer;
+	
+		// if($.cookie('emailSubscription') != 'subscription') {
+			
+			timer = setInterval(popupTimer, 1000);
+	
+			function popupTimer() {
+			let time = Date.now() - parseInt(sessionStorage.getItem('firstVisit'));
+			localStorage.setItem('timeOnSite', time);
+			if (+time/1000 >= 5) {
+				showDiscount();
+				clearInterval(timer);
+			}
+			}
+	
+		// } else {
+		//   localStorage.removeItem('timeOnSite');
+		//   sessionStorage.removeItem('firstVisit');
+		// }
+	
+		function showDiscount() {
+			popup.dataset.visible = true;
+		}
+	
+		function closeDiscount() {
+			popup.dataset.visible = false;
+			sessionStorage.setItem('firstVisit', Date.now());
+			clearInterval(timer);
+			if (!d.querySelector('.discount__success')) {
+			setInterval(popupTimer, 1000);
+			}
+		}
+	
+		popup.addEventListener('click', e => {
+			if(e.target.classList.contains("popup") || e.target.classList.contains("popup__close")) {
+			closeDiscount();
+			}
+		});
+	
+	}(document, window));
+	/* SALE POPUP END */
+
+	
 
 });

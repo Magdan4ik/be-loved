@@ -182,6 +182,34 @@
 			&__title
 				display: none
 
+/* Small Devices */
+@media only screen and (max-width : 600px)
+	.discount
+		&__inner
+			flex-direction: column
+		&__rside
+			position: absolute
+			top: 0
+			bottom: 0
+			overflow: hidden
+			img
+				filter: blur(5px) brightness(0.5)
+				transform: scale(1.1)
+		&__lside
+			position: relative
+			z-index: 2
+			color: #fff
+		&__form
+			grid-template-columns: 1fr
+			input
+				background: none
+				border: 2px solid #fff
+				color: #fff
+			button
+				border-color: #fff
+				color: #fff
+			
+
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px)

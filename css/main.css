@@ -517,6 +517,193 @@ body::before {
   display: none;
 }
 
+.discount {
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  padding: 15px;
+  transition: 0.4s;
+}
+
+.discount[data-visible="true"] {
+  visibility: visible;
+  opacity: 1;
+}
+
+.discount[data-visible="false"] {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.discount__close {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  background: none;
+  color: #fff;
+  font-size: 0;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.discount__close::before {
+  content: '\2715';
+  font-size: 28px;
+}
+
+.discount__inner {
+  position: relative;
+  font-size: 18px;
+  max-width: 850px;
+  min-height: 360px;
+  background-color: #fff;
+  display: flex;
+}
+
+.discount__lside {
+  flex: 0 0 50%;
+  padding: 25px;
+  text-align: center;
+  font-family: "Gilroy";
+  color: #212121;
+}
+
+.discount__rside {
+  flex: 0 0 50%;
+}
+
+.discount__rside img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.discount__title {
+  margin: 15px 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.discount__subtitle {
+  max-width: 240px;
+  margin: 0 auto 40px auto;
+  font-size: 15px;
+}
+
+.discount__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  margin-bottom: 30px;
+  font-size: 13px;
+  font-family: "Gilroy";
+  color: #212121;
+}
+
+.discount__form input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #212121;
+  color: #212121;
+  transition: 0.3s border;
+}
+
+.discount__form input::-webkit-input-placeholder {
+  color: #cdcdcd;
+  opacity: 1;
+  transition: 0.3s opacity;
+}
+
+.discount__form input:-ms-input-placeholder {
+  color: #cdcdcd;
+  opacity: 1;
+  transition: 0.3s opacity;
+}
+
+.discount__form input::-ms-input-placeholder {
+  color: #cdcdcd;
+  opacity: 1;
+  transition: 0.3s opacity;
+}
+
+.discount__form input::placeholder {
+  color: #cdcdcd;
+  opacity: 1;
+  transition: 0.3s opacity;
+}
+
+.discount__form input:focus {
+  border-color: #ea5144;
+}
+
+.discount__form input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.discount__form input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+
+.discount__form input:focus::-ms-input-placeholder {
+  opacity: 0;
+}
+
+.discount__form input:focus::placeholder {
+  opacity: 0;
+}
+
+.discount__form button {
+  grid-column: 1/-1;
+  justify-self: center;
+  padding: 6px;
+  min-width: 115px;
+  background: none;
+  outline: none;
+  box-shadow: none;
+  font-weight: 700;
+  border: 2px solid #212121;
+  transition: 0.3s;
+}
+
+.discount__form button:hover {
+  color: #ea5144;
+  border-color: #ea5144;
+}
+
+.discount__p1 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 15px 0;
+}
+
+.discount__p2 {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.discount__p2 span {
+  color: #ea5144;
+}
+
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -814,6 +1001,42 @@ body::before {
   }
   .header .basket__title {
     display: none;
+  }
+}
+
+/* Small Devices */
+@media only screen and (max-width: 600px) {
+  .discount__inner {
+    flex-direction: column;
+  }
+  .discount__rside {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+  .discount__rside img {
+    -webkit-filter: blur(5px) brightness(0.5);
+            filter: blur(5px) brightness(0.5);
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  .discount__lside {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+  }
+  .discount__form {
+    grid-template-columns: 1fr;
+  }
+  .discount__form input {
+    background: none;
+    border: 2px solid #fff;
+    color: #fff;
+  }
+  .discount__form button {
+    border-color: #fff;
+    color: #fff;
   }
 }
 
